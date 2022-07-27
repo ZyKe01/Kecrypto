@@ -56,15 +56,15 @@ PoC impl of the scheme, or do implement analysis by Google.
 
 函数birthday()为生日攻击代码，设置要寻找的碰撞长度length（以字节为单位），选择初始输入$x_1=x_2=x_0$，用两个变量$x_1$和$x_2$记录中间值，$x_1$每次进行一次哈希，$x_2$每次进行两次哈希。即每次循环$x_1=H(x_1), x_2=H(H(x_2))$直到$x_1=x_2$
 
-<img src="C:\Users\ZYK\AppData\Roaming\Typora\typora-user-images\image-20220727123043443.png" alt="image-20220727123043443" style="zoom: 67%;" />
+<img src="image\image-20220727123043443.png" alt="image-20220727123043443" style="zoom: 67%;" />
 
 然后再计算第一次相等的值即找到碰撞
 
-<img src="C:\Users\ZYK\AppData\Roaming\Typora\typora-user-images\image-20220727123207886.png" alt="image-20220727123207886" style="zoom:67%;" />
+<img src=image\image-20220727123207886.png" alt="image-20220727123207886" style="zoom:67%;" />
 
 代码运行结果如下
 
-<img src="C:\Users\ZYK\AppData\Roaming\Typora\typora-user-images\image-20220727123352617.png" alt="image-20220727123352617" style="zoom:67%;" />
+<img src="image\image-20220727123352617.png" alt="image-20220727123352617" style="zoom:67%;" />
 
 最终找到最长的碰撞是64bit
 
