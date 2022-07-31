@@ -14,6 +14,8 @@ implement length extension attack for SM3, SHA256, etc.
 
 ##### SM2
 
+report on the application of this deduce technique in Ethereum with ECDSA.  
+
 impl sm2 with RFC6979.  
 
 verify the above pitfalls with proof-of-concept code.  
@@ -36,13 +38,15 @@ do your best to optimize SM3 implementation (software).
 
 Impl Merkle Tree following RFC6962.  
 
-report on the application of this deduce technique in Ethereum with ECDSA.  
-
- implement sm2 2P sign with real network communication.  
+implement sm2 2P sign with real network communication.  
 
 implement sm2 2P decrypt with real network communication.  
 
 PoC impl of the scheme, or do implement analysis by Google.  
+
+Real World Cryptanalyses
+
+Real World zk-SNARKs
 
 ## 代码说明
 
