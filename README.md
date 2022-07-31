@@ -56,15 +56,57 @@ PoC impl of the scheme, or do implement analysis by Google.
 
 函数birthday()为生日攻击代码，设置要寻找的碰撞长度length（以字节为单位），选择初始输入$x_1=x_2=x_0$，用两个变量$x_1$和$x_2$记录中间值，$x_1$每次进行一次哈希，$x_2$每次进行两次哈希。即每次循环$x_1=H(x_1), x_2=H(H(x_2))$直到$x_1=x_2$
 
-<img src="image\image-20220727123043443.png" alt="image-20220727123043443" width=350px />
+
+
+```c++
+for (i;; i++) {
+	EVP_Digest(x1, x1_len, x1, &x1_len, EVP_sm3(), NULL);
+	x1_len = length;	//只要求前length字节相同
+
+	EVP_Digest(x2, x2_len, x2, &x2_len, EVP_sm3(), NULL);
+	x2_len = length;	//只要求前length字节相同
+	EVP_Digest(x2, x2_len, x2, &x2_len, EVP_sm3(), NULL);
+	x2_len = length;	//只要求前length字节相同
+
+	if (!memcmp(x1, x2, length)) {
+		printf("存在%dbytes相同\n", length);
+		memcpy(x2, x1, x1_len);
+		memcpy(x1, x0, x0_len);
+		x2_len = x1_len;
+		x1_len = x0_len;
+		break;
+	}
+}
+```
+
 
 然后再计算第一次相等的值即找到碰撞
 
-<img src="image\image-20220727123207886.png" alt="image-20220727123207886" width=350px />
+
+
+```c++
+for (unsigned long long j = 1; j <= i; j++) {
+	EVP_Digest(x1, x1_len, out1, &out1_len, EVP_sm3(), NULL);
+	out1_len = length;
+	EVP_Digest(x2, x2_len, out2, &out2_len, EVP_sm3(), NULL);
+	out2_len = length;
+	if (!memcmp(out1, out2, length)) {
+		memcpy(str1, x1, x1_len);
+		memcpy(str2, x2, x2_len);
+		printf("j:%lld\n", j);
+		return 1;
+	}
+	memcpy(x1, out1, out1_len);
+	memcpy(x2, out2, out2_len);
+	x1_len = out1_len;
+	x2_len = out2_len;
+}
+```
+
 
 代码运行结果如下
 
-<img src="image\image-20220727123352617.png" alt="image-20220727123352617" width=450px />
+<img src="image\image-20220727123352617.png" alt="image-20220727123352617" />
 
 最终找到最长的碰撞是64bit
 
