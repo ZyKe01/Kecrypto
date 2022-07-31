@@ -400,16 +400,16 @@ sm2_decrypt(c1, c3, c2, c2_len, pri_key, key);
 <img src="image\image-20220730211248462.png" alt="image-20220730211248462" style="zoom:67%;" />
 
 #### implement sm2 2P sign with real network communication.  
-image
-![image-20220731101839584](image\image-20220731101839584.png)
+
+<img src="image\image-20220731101839584.png" alt="image-20220730211248462" />
 
 等价于私钥为$d=(d_1d_2)^{-1}-1$公钥为$P=[(d_1d_2)^{-1}-1]G$的SM2签名
 
-运行结果
+代码位于[Kecrypto](https://github.com/ZyKe01/Kecrypto)/[SM2](https://github.com/ZyKe01/Kecrypto/tree/main/SM2)/**server.py**和[Kecrypto](https://github.com/ZyKe01/Kecrypto)/[SM2](https://github.com/ZyKe01/Kecrypto/tree/main/SM2)/**client.py**运行结果
 
-![image-20220731102207778](image\image-20220731102207778.png)
+<img src="image\image-20220731102207778.png" alt="image-20220730211248462" />
 
-![image-20220731102219897](image\image-20220731102219897.png)
+<img src="image\image-20220731102219897.png" alt="image-20220730211248462" />
 
 ## Bitcoin
 
