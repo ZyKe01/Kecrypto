@@ -24,6 +24,8 @@ implement the above ECMH scheme.
 
 implement a PGP scheme with SM2.
 
+implement sm2 2P sign with real network communication.  
+
 ##### Bitcoin
 
 send a tx on  Bitcoin testnet, and  parse the tx data down  to every bit, better  write script yourself.  
@@ -37,8 +39,6 @@ implement the naïve birthday attack of reduced SM3.(实现了Rho)
 do your best to optimize SM3 implementation (software).  
 
 Impl Merkle Tree following RFC6962.  
-
-implement sm2 2P sign with real network communication.  
 
 implement sm2 2P decrypt with real network communication.  
 
@@ -398,6 +398,18 @@ sm2_decrypt(c1, c3, c2, c2_len, pri_key, key);
 再用会话密钥解密出消息明文。以上代码和示例在[Kecrypto](https://github.com/ZyKe01/Kecrypto)/[SM2](https://github.com/ZyKe01/Kecrypto/tree/main/SM2)/**PGP.h**，运行结果
 
 <img src="image\image-20220730211248462.png" alt="image-20220730211248462" style="zoom:67%;" />
+
+#### implement sm2 2P sign with real network communication.  
+image
+![image-20220731101839584](image\image-20220731101839584.png)
+
+等价于私钥为$d=(d_1d_2)^{-1}-1$公钥为$P=[(d_1d_2)^{-1}-1]G$的SM2签名
+
+运行结果
+
+![image-20220731102207778](image\image-20220731102207778.png)
+
+![image-20220731102219897](image\image-20220731102219897.png)
 
 ## Bitcoin
 
